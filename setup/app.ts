@@ -1,51 +1,9 @@
-//Union types
-
-// function combine(input1: number | string, input2: number | string) {
-//   let result;
-//   if (typeof input1 === 'number' && input2 === 'number') {
-//     result = input1 + input2;
-//   } else {
-//     result = input1.toString() + input2.toString();
-//   }
-
-//   return result;
-// }
-
-// const combineAges = combine(30, 26);
-
-// const combineNames = combine('Max', 'Anna');
-
-function combine(
-  input1: number | string,
-  input2: number | string,
-  //resultConversion: string
-  //literal types
-  resultConversion: 'as-number' | 'as-text'
-) {
-  let result;
-  if (
-    (typeof input1 === 'number' && input2 === 'number') ||
-    resultConversion === 'as-number'
-  ) {
-    result = +input1 + +input2;
-  } else {
-    result = input1.toString() + input2.toString();
-  }
-
-  // if (resultConversion === 'as-number') {
-  //   return +result;
-  // } else {
-  //   return result.toString();
-  // }
-
-  return result;
+//makes sure the return type is a number
+function add(n1: number, n2: number): number {
+  return n1 + n2;
 }
 
-const combineAges = combine(30, 26, 'as-number');
-console.log(combineAges);
-
-const combineStringAges = combine('30', '25', 'as-number');
-console.log(combineStringAges);
-
-const combineNames = combine('Max', 'Anna', 'as-text');
-console.log(combineNames);
+//labels the return type as VOID because it doesn't know how to label it. Will return undefined, which is a valid type in typescript
+function printResult(num: number) {
+  console.log('Result' + num);
+}

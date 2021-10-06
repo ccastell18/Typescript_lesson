@@ -12,3 +12,6 @@
  * tuple - a fixed-length array. limits how the array is manipulated. Can "push" onto the array, but everything else must match the specific types.
 
  * Enum - Automatically enumerated global constant identifiers
+
+
+ *functions - the return is inferred. add a colon and type after the parameters
