@@ -1,0 +1,6 @@
+ Core Types
+
+ * number - integers and floats
+ * string - '', "", ``
+ * boolean - true, false. No truthy or falsy
+ 
