@@ -3,4 +3,4 @@
  * number - integers and floats
  * string - '', "", ``
  * boolean - true, false. No truthy or falsy
- 
+ * object - any js object, more specific types are possible 

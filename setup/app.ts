@@ -1,10 +1,16 @@
-function add(n1: number, n2: number) {
-  return n1 + n2;
-}
+// This is an object type inferred by Typescript. it creates key: type pairs.
+// const person = {
+//   name: 'Max',
+//   age: 30,
+// };
 
-const number1 = 5;
-const number2 = 2.8;
+//the {} after person is typescript notation of a special object
+const person: {
+  name: string;
+  age: number;
+} = {
+  name: 'Max',
+  age: 30,
+};
 
-const result = add(number1, number2);
-
-console.log(result);
+console.log(person.name);
