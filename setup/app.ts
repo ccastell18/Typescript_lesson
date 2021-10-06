@@ -1,51 +1,16 @@
-// This is an object type inferred by Typescript. it creates key: type pairs.
-// const person = {
-//   name: 'Max',
-//   age: 30,
-// };
+//Union types
 
-//the {} after person is typescript notation of a special object
-// const person: {
-//   name: string;
-//   age: number;
-// } = {
+function combine(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === 'number' && input2 === 'number') {
+    result = input1 + input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
 
-// const person = {
-//   name: 'Max',
-//   age: 30,
-//   hobbies: ['sports', 'cooking'],
-
-// };
-
-//with role as tuple
-// const person: {
-//   name: string;
-//   age: number;
-//   hobbies: string[];
-//   role: [number, string];
-// } = {
-//   name: 'Max',
-//   age: 30,
-//   hobbies: ['sports', 'cooking'],
-//   //a union array. Also a tuple. can 'push' to a tuple, but types must be utilized.
-//   role: [2, 'author'],
-// };
-
-//Enum
-//assigns labels to numbers
-enum Role {
-  ADMIN,
-  READ_ONLY,
-  AUTHOR,
+  return result;
 }
 
-const person = {
-  name: 'Max',
-  age: 30,
-  hobbies: ['sports', 'cooking'],
-  role: Role.ADMIN,
-};
+const combineAges = combine(30, 26);
 
-if (person.role === Role.AUTHOR) {
-  console.log('is author');
-}
+const combineNames = combine('Max', 'Anna');

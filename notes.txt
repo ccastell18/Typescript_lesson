@@ -7,7 +7,6 @@
  * arrays - any js array, type can be flexible or strict
 
  string[] = array with only strings. Running a for loop over a string[] gives you access to method you can use on a regular string
- number[]
  any[] = mixed types array
 
  * tuple - a fixed-length array. limits how the array is manipulated. Can "push" onto the array, but everything else must match the specific types.
