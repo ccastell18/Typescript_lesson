@@ -1,13 +1,16 @@
-//makes sure the return type is a number
-function add(n1, n2) {
-    return n1 + n2;
+var userInput;
+var userName;
+//These both work because the type is not known
+userInput = 5;
+userInput = 'Max';
+//this does not work because username is expecting a string and userInput isn't specified.
+//username = userInput
+//this works because of the if statement
+if (typeof userInput === 'string') {
+    userName = userInput;
 }
-//labels the return type as VOID because it doesn't know how to label it. Will return undefined, which is a valid type in typescript
-function printResult(num) {
-    console.log('Result' + num);
+//this function crashes the program so it never returns anything. So the type is never.
+function generateError(message, code) {
+    throw { message: message, errorCode: code };
 }
-//saving a function as a variable
-// let combineValues: Function;
-var combineValues;
-combineValues = add;
-console.log(combineValues(8, 8));
+generateError('An error occurred', 500);

@@ -12,3 +12,10 @@ userInput = 'Max';
 if (typeof userInput === 'string') {
   userName = userInput;
 }
+
+//this function crashes the program so it never returns anything. So the type is never.
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+}
+
+generateError('An error occurred', 500);
