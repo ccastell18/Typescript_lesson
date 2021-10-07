@@ -16,4 +16,11 @@
 
  *functions - the return is inferred. add a colon and type after the parameters
 
- 
+
+
+ Compiling
+
+ tsc {fileName.ts } --watch     will keep updating the file without having to tsc the file for every change
+
+ tsc --init    will watch all .ts files and compile changes
+
