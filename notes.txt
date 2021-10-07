@@ -34,3 +34,7 @@
 *sourcemap will send .ts copies to the source tab in the browser inspector.
 
 * outDir redirects the compiled files to another folder to keep .ts and .js in seperate areas
+
+* rootDir specifies where the .ts files are to be compiled.
+
+*noEmitOnError will not compile a file if it contains an error.
