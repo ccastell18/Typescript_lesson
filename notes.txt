@@ -38,3 +38,31 @@
 * rootDir specifies where the .ts files are to be compiled.
 
 *noEmitOnError will not compile a file if it contains an error.
+
+
+classes -
+modifiers
+*private - access in class only
+*public - access anywhere
+*static method - a call directly on a class, not an object creted based on it.
+*abstract classes - cant be instantiated but has to be extended
+*singleton class - only ever have one instance of a singleton class
+
+interface 
+* Defines what and object should look like. the structure.
+* used to typecheck object structure
+
+* implementing multiple interfaces to a class
+  ex. class Person implements Greetable{}
+* the class must use all properties from the interface, but can add own properties or methods
+* readonly - the property cannot be changed if it has been initiated
+* an interface can be extended like a class
+* can define the structure of a functions
+  ex. interface AddFn {
+      (a:number, b:number): number
+  }
+  let add: AddFn
+  add = (n1:number, n2:number) =>{
+    return n1 + n2
+  }
+* to make a property optional, add a ? at the end of the property key.
