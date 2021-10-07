@@ -27,3 +27,10 @@
  *to exclude a file from compiling, add a key named "exclude" at the end of tsconfig.json and have an array of files you do not want compiled.
 
 * to make sure to include files, add a key named 'include' at the end of tsconfig.json and have an array of files you want to make sure are included
+
+*If errors with dom are occurring, change 'lib' in tsconfig.json and add identifiers
+  make sure 'dom', 'es6', 'dom.iterable', 'scripthost' are in the array to have access to everything in e6.
+
+*sourcemap will send .ts copies to the source tab in the browser inspector.
+
+* outDir redirects the compiled files to another folder to keep .ts and .js in seperate areas
