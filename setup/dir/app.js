@@ -1,5 +1,6 @@
-var userInput;
-var userName;
+"use strict";
+let userInput;
+let userName;
 //These both work because the type is not known
 userInput = 5;
 userInput = 'Max';

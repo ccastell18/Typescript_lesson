@@ -66,3 +66,7 @@ interface
     return n1 + n2
   }
 * to make a property optional, add a ? at the end of the property key.
+
+
+
+ADVANCED TYPES 
