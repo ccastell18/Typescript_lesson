@@ -20,7 +20,10 @@
 
  Compiling
 
- tsc {fileName.ts } --watch     will keep updating the file without having to tsc the file for every change
+ *tsc {fileName.ts } --watch     will keep updating the file without having to tsc the file for every change
 
- tsc --init    will watch all .ts files and compile changes
+ *tsc --init    will watch all .ts files and compile changes
 
+ *to exclude a file from compiling, add a key named "exclude" at the end of tsconfig.json and have an array of files you do not want compiled.
+
+* to make sure to include files, add a key named 'include' at the end of tsconfig.json and have an array of files you want to make sure are included

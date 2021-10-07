@@ -1,2 +1,2 @@
 "use strict";
-var page = 'chris';
+let page = 'chris';
