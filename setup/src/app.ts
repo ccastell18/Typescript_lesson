@@ -126,3 +126,12 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({ type: 'horse', runningSpeed: 105 });
+
+// Type casting - when working with DOM
+//put the brackets and the type of element before the document and an '!' after to signify there will be a propaerty
+// const input = <HTMLInputElement>document.getElementById('user-input')!;
+
+//  or JSX style and rename the element
+const input = document.getElementById('user-input')! as HTMLInputElement;
+
+input.value = 'Hello World';
