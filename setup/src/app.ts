@@ -14,6 +14,7 @@ const promise: Promise<string> = new Promise((resolve, reject) => {
 
 // GENERIC FUNCTIONS
 //using generic types means different info will be parameters and will return an intersection. Set dynamically.
+//extending the generic types creates restraints on what kind of data is allowed.
 function merge<T extends object, U extends object>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
@@ -23,3 +24,21 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
 
 const mergeObj = merge({ name: 'Max' }, { age: 39 });
 console.log(mergeObj.age);
+
+// ANOTHER GENERIC FUNCTION
+//to correct length error, use an interface
+interface Lengthy {
+  length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+  let descriptionText = 'Got no value';
+  if (element.length === 1) {
+    descriptionText = 'Got 1 element';
+  } else if (element.length > 1) {
+    descriptionText = 'Got ' + element.length + ' elements';
+  }
+  return [element, descriptionText];
+}
+
+console.log(countAndDescribe([]));
