@@ -163,8 +163,17 @@ result.split(' ');
 const fetchedUserData = {
   id: 'u1',
   name: 'max',
-  // job: { title: 'ceo', description: 'my own company' },
+  job: { title: 'ceo', description: 'my own company' },
 };
 
 // the question mark checks to make sure the data is in the object
 console.log(fetchedUserData?.job?.title);
+
+// NULLISH COALESCING
+const computerInput = ' ';
+//with the or symbol is entered, it will print default for null or undefined
+// const storedData = computerInput || 'DEFAULT';
+// if double question marks are entered, it will print anything not null or undefined
+const storedData = computerInput ?? 'DEFAULT';
+
+console.log(storedData);
