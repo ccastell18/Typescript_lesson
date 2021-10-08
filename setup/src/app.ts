@@ -30,7 +30,7 @@ console.log(mergeObj.age);
 interface Lengthy {
   length: number;
 }
-
+//can give anytime of input to the function.
 function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
   let descriptionText = 'Got no value';
   if (element.length === 1) {
@@ -42,3 +42,55 @@ function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
 }
 
 console.log(countAndDescribe([]));
+
+// KEYOF CONSTRAING
+
+function extractAndCount<T extends object, U extends keyof T>(obj: T, key: U) {
+  return 'Value: ' + obj[key];
+}
+
+extractAndCount({ name: 'Max' }, 'name');
+
+// GENERIC CLASS
+
+class DataStorage<T> {
+  private data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+  removeItem(item: T) {
+    this.data.splice(this.data.indexOf(item), 1);
+  }
+
+  getItems() {
+    return [...this.data];
+  }
+}
+
+//gives flexibility while also being constrained. Can be string, number, object, etc....
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Max');
+textStorage.addItem('manu');
+textStorage.addItem('chris');
+textStorage.removeItem('chris');
+console.log(textStorage.getItems());
+
+// GENERIC UTILITY TYPES
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
+//Partial can make an interface like a type and not need all properties from interface
+function createCourseGoal(
+  title: string,
+  description: string,
+  date: Date
+): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = date;
+  return courseGoal as CourseGoal;
+}
