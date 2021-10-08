@@ -14,7 +14,7 @@ const promise: Promise<string> = new Promise((resolve, reject) => {
 
 // GENERIC FUNCTIONS
 //using generic types means different info will be parameters and will return an intersection. Set dynamically.
-function merge<T, U>(objA: T, objB: U) {
+function merge<T extends object, U extends object>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
 
