@@ -69,4 +69,5 @@ interface
 
 
 
-ADVANCED TYPES 
+Type Guards make sure the property or instance is in the class, type, or interface using
+'____' in 'variable'   or  '________' instanceof 'Class name'

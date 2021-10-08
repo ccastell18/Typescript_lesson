@@ -42,7 +42,7 @@
 // }
 
 //reusable type
-type Combinable = number | string;
+//type Combinable = number | string;
 
 function combine(
   input1: Combinable,
