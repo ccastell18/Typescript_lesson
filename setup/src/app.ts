@@ -36,28 +36,6 @@ const e1: ElevatedEmployee = {
 //   startDate: new Date(),
 // };
 
-type Combinable = string | number;
-type Numeric = number | boolean;
-
-type Universal = Combinable & Numeric;
-
-// function overload
-function adding(a: number, b: number): number;
-function adding(a: string, b: string): string;
-function adding(a: string, b: number): string;
-function adding(a: number, b: string): string;
-//TYPE GUARDS
-function adding(a: Combinable, b: Combinable) {
-  if (typeof a === 'string' || typeof b === 'string') {
-    return a.toString() + b.toString();
-  }
-  return a + b;
-}
-
-//with the overload, the answer now works
-const result = adding('Max', 'Sherman');
-result.split(' ');
-
 type UnknownEmployee = Employee | Admin;
 
 function printEmployeeInformation(emp: UnknownEmployee) {
@@ -144,7 +122,8 @@ moveAnimal({ type: 'horse', runningSpeed: 105 });
 const input = document.getElementById('user-input')! as HTMLInputElement;
 
 input.value = 'Hello World';
-_____________________________________________________________________________;
+
+// _____________________________________________________________________________
 //Index Properties
 interface ErrorContainer {
   //{email: 'not a valid email', username: 'Must start with a capital character}
@@ -156,4 +135,36 @@ const errorBag: ErrorContainer = {
   username: 'must start with a capital character',
 };
 
-// Function Overload
+// ______________________________________________________
+
+type Combinable = string | number;
+type Numeric = number | boolean;
+
+type Universal = Combinable & Numeric;
+
+//FUNCTION OVERLOAD
+function adding(a: number, b: number): number;
+function adding(a: string, b: string): string;
+function adding(a: string, b: number): string;
+function adding(a: number, b: string): string;
+//TYPE GUARDS
+function adding(a: Combinable, b: Combinable) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+
+//with the overload, the answer now works
+const result = adding('Max', 'Sherman');
+result.split(' ');
+
+// OPTIONAL CHAINING
+const fetchedUserData = {
+  id: 'u1',
+  name: 'max',
+  // job: { title: 'ceo', description: 'my own company' },
+};
+
+// the question mark checks to make sure the data is in the object
+console.log(fetchedUserData?.job?.title);
