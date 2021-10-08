@@ -41,6 +41,11 @@ type Numeric = number | boolean;
 
 type Universal = Combinable & Numeric;
 
+// function overload
+function adding(a: number, b: number): number;
+function adding(a: string, b: string): string;
+function adding(a: string, b: number): string;
+function adding(a: number, b: string): string;
 //TYPE GUARDS
 function adding(a: Combinable, b: Combinable) {
   if (typeof a === 'string' || typeof b === 'string') {
@@ -48,6 +53,10 @@ function adding(a: Combinable, b: Combinable) {
   }
   return a + b;
 }
+
+//with the overload, the answer now works
+const result = adding('Max', 'Sherman');
+result.split(' ');
 
 type UnknownEmployee = Employee | Admin;
 
@@ -135,3 +144,16 @@ moveAnimal({ type: 'horse', runningSpeed: 105 });
 const input = document.getElementById('user-input')! as HTMLInputElement;
 
 input.value = 'Hello World';
+_____________________________________________________________________________;
+//Index Properties
+interface ErrorContainer {
+  //{email: 'not a valid email', username: 'Must start with a capital character}
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: 'Not a valid email',
+  username: 'must start with a capital character',
+};
+
+// Function Overload
