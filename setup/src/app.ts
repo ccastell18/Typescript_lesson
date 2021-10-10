@@ -28,21 +28,40 @@
 //   };
 // }
 
+//returning a value from a decorator
+function WithTemplate(template: string, hookId: string) {
+  return function <T extends { new (...args: any[]): { name: string } }>(
+    constructor1: T
+  ) {
+    return class extends constructor1 {
+      constructor(..._: any[]) {
+        super();
+        console.log('template');
+        const hookEl = document.getElementById(hookId);
+        if (hookEl) {
+          hookEl.innerHTML = template;
+          hookEl.querySelector('h1')!.textContent = this.name;
+        }
+      }
+    };
+  };
+}
+
 // //1. @Logger
 // // 2.
 // @Logger('Logging Person')
-// @WithTemplate('<h1>My Person Object</h1>', 'app')
-// class Person {
-//   name = 'Max';
+@WithTemplate('<h1>My Person Object</h1>', 'app')
+class Person {
+  name = 'Max';
 
-//   constructor() {
-//     console.log('creating person object');
-//   }
-// }
+  constructor() {
+    console.log('creating person object');
+  }
+}
 
-// const pers = new Person();
+const pers = new Person();
 
-// console.log(pers);
+console.log(pers);
 
 // _______________________________
 
