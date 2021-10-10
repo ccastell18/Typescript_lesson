@@ -154,11 +154,48 @@ button.addEventListener('click', p.showMessage);
 // _________________________________________
 //Validation Decorator
 
-function Required() {}
+interface ValidatorConfig {
+  [property: string]: {
+    [validatableProp: string]: string[];
+  };
+}
 
-function PositiveNumber() {}
+const registeredValidators: ValidatorConfig = {};
 
-function validate(obj: object) {}
+function Required(target: any, propName: string) {
+  registeredValidators[target.constructor.name] = {
+    ...registeredValidators[target.constructor.name],
+    [propName]: ['required'],
+  };
+}
+
+function PositiveNumber(target: any, propName: string) {
+  registeredValidators[target.constructor.name] = {
+    ...registeredValidators[target.constructor.name],
+    [propName]: ['positive'],
+  };
+}
+
+function validate(obj: any) {
+  const objValidatorConfig = registeredValidators[obj.constructor.name];
+  if (!objValidatorConfig) {
+    return true;
+  }
+  let isValid = true;
+  for (const prop in objValidatorConfig) {
+    for (const validator of objValidatorConfig[prop]) {
+      switch (validator) {
+        case 'required':
+          isValid = isValid && !!obj[prop];
+          break;
+        case 'positive':
+          isValid = isValid && obj[prop] > 0;
+          break;
+      }
+    }
+  }
+  return isValid;
+}
 
 class Course {
   @Required
@@ -173,18 +210,19 @@ class Course {
 }
 
 const courseForm = document.querySelector('form')!;
-courseForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+courseForm.addEventListener('submit', (event) => {
+  event.preventDefault();
   const titleEl = document.getElementById('title') as HTMLInputElement;
   const priceEl = document.getElementById('price') as HTMLInputElement;
 
   const title = titleEl.value;
   const price = +priceEl.value;
 
-  if (!createCourse) {
-    throw new Error('The form was not valid');
-  }
+  const createdCourse = new Course(title, price);
 
-  const createCourse = new Course(title, price);
-  console.log(createCourse);
+  if (!validate(createdCourse)) {
+    alert('The form was not valid');
+    return;
+  }
+  console.log(createdCourse);
 });
